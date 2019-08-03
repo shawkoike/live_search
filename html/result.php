@@ -58,7 +58,7 @@ $(function(){
   </header>
 
 <?php
-  $link = mysqli_connect('localhost', 'shaw', 'Shaw19940522', 'live');
+  $link = mysqli_connect('localhost', '', '', 'live');
   mysqli_set_charset($link,"utf8");
   if ($_POST["area_no"]) {
     $live_data = mysqli_query($link, "SELECT * FROM m_live INNER JOIN m_live_house ON m_live_house.live_house_no = m_live.live_house_no INNER JOIN m_prefecture ON m_live.live_area_no = m_prefecture.id WHERE live_area_no = ".$_POST["area_no"].' AND live_date_time >= "'.str_replace('/', '-', $_POST["date"]).'-01 00:00:00" AND live_date_time <="'.str_replace('/', '-', $_POST["date"]).'-31 23:59:59";');

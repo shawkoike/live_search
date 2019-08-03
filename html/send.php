@@ -59,8 +59,8 @@ $(function(){
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'shaw.koike@gmail.com';
-    $mail->Password = 'Shaw19940522';
+    $mail->Username = '';
+    $mail->Password = '';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587; 
     $mail->setFrom('shaw.koike@gmail.com', 'From System mohanak.net');

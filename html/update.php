@@ -1,7 +1,7 @@
 <?php
   $dsn = 'mysql:host=localhost;dbname=live;charset=utf8';
-  $user = 'shaw';
-  $password = 'Shaw19940522';
+  $user = '';
+  $password = '';
 
   //DB接続
   try {
