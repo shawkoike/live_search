@@ -79,10 +79,10 @@ $(function(){
 <?php
   $link = mysqli_connect('localhost', '', '', 'live');
   mysqli_set_charset($link,"utf8");
-  $tokyo_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 12 AND disp_flg = 0 ORDER BY sequence LIMIT 5;");
-  $aichi_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 22 AND disp_flg = 0 ORDER BY sequence LIMIT 5;");
-  $kanagawa_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 13 AND disp_flg = 0 ORDER BY sequence LIMIT 5;");
-  $osaka_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 26 AND disp_flg = 0 ORDER BY sequence LIMIT 5;");
+  $tokyo_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 12 AND disp_flg = 0 ORDER BY live_date_time LIMIT 5;");
+  $aichi_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 22 AND disp_flg = 0 ORDER BY live_date_time LIMIT 5;");
+  $kanagawa_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 13 AND disp_flg = 0 ORDER BY live_date_time LIMIT 5;");
+  $osaka_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 26 AND disp_flg = 0 ORDER BY live_date_time LIMIT 5;");
   $week = [
 	    '日', //0
 	      '月', //1
