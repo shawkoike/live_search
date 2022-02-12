@@ -12,7 +12,7 @@
 
 
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?ver=1.0.1">
+<link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -83,7 +83,7 @@ $(function(){
   $tokyo_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 12 AND disp_flg = 0 ORDER BY live_date_time LIMIT 5;");
   $aichi_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 22 AND disp_flg = 0 ORDER BY live_date_time LIMIT 5;");
   $kanagawa_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 13 AND disp_flg = 0 ORDER BY live_date_time LIMIT 5;");
-  $copy_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE disp_flg = 0 AND genre = 'コピーバンドイベント' ORDER BY live_date_time LIMIT 5;");
+  $osaka_live_data = mysqli_query($link, "SELECT * FROM m_live WHERE live_area_no = 26 AND disp_flg = 0 ORDER BY live_date_time LIMIT 5;");
   $week = [
 	    '日', //0
 	      '月', //1
@@ -188,12 +188,13 @@ $(function(){
       <a class="more" href="http://mohanak.net/result.php?area_no=13">もっと見る</a>
     </div>
 
-    <!-- コピーイベント -->
+    <!-- 大阪情報 -->
+    <!--
     <div class="news">
-      <h1>コピーバンドイベント新着情報</h1>
+      <h1>大阪新着情報</h1>
       <ul>
         <?php
-  	  while($obj = $copy_live_data->fetch_object()) {
+  	  while($obj = $osaka_live_data->fetch_object()) {
             $live_date = new DateTime($obj->live_date_time);
             echo('<li><a href="http://mohanak.net/info.php?liveCd='.$obj->sequence.'">');
 	    $date = $live_date->format('Y-m-d');
@@ -216,8 +217,8 @@ $(function(){
 	  }
         ?>
       </ul>
-      <a class="more" href="http://mohanak.net/copy.php">もっと見る</a>
     </div>
+    -->
 
 
 
@@ -239,7 +240,7 @@ $(function(){
 	</li>
 	-->
 
-        <a href="tel:0428127000" class="btn-tel">お電話での問い合わせはこちらから</a>
+	<a href="tel:0428127000" class="btn-tel">お電話での問い合わせはこちらから</a>
 	<li>
           <div class="gaiyou">
             <a href="http://mohanak.net/search.php">

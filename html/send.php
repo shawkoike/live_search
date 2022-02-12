@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>ライブ検索サービス</title>
 <meta name="viewport" content="width=device-width">
+<meta name="keywords" content="土日,出演者募集中,ライブ出演,コピーバンド,出演バンド,東京,名古屋,神奈川,大阪,土曜,日曜,MOHANAK,モハナック">
+<meta name=”description” content="イベント企画/制作/運営 MOHANAK(モハナック)が主催する、東京/名古屋/神奈川/大阪を中心に土日音楽ライブイベント出演者募集。社会人バンド、コピーバンド、週末限定、プロ志向、アマ問いません
+。">
 
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style-info.css">
@@ -59,8 +62,8 @@ $(function(){
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = '';
-    $mail->Password = '';
+    $mail->Username = 'shaw.koike@gmail.com';
+    $mail->Password = 'Shaw19940522';
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587; 
     $mail->setFrom('shaw.koike@gmail.com', 'From System mohanak.net');
@@ -100,7 +103,7 @@ $(function(){
           <div class="gaiyou">
             <a href="http://35.213.2.106/search.php">
 	      <img class="search_img" src="img/search.jpg" />
-              <p>様々な条件から出演可能なライブ検索が可能です。</p>
+              <p>様々な条件から出演可能なライブが検索できます。</p>
             </a>
           </div>
 	</li>

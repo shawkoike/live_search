@@ -12,11 +12,10 @@
 。">
 
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style-search.css?ver=1.0.1">
+<link rel="stylesheet" href="css/style-result.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126289985-2"></script>
 <script>
@@ -26,19 +25,13 @@
 
     gtag('config', 'UA-126289985-2');
 </script>
-<script type="text/javascript">
+<script>
 $(function(){
 	$("#menubtn").click(function(){
 		$("#menu").slideToggle();
 	});
-        
-	$('#YearMonth').datepicker({
-                format: 'yyyy年mm月',
-	        language: 'ja',       // カレンダー日本語化のため
-                minViewMode : 1
-	});
-});
 
+});
 </script>
 </head>
 <body>
@@ -67,34 +60,39 @@ $(function(){
     </div>
   </header>
 
+<?php
+  $link = mysqli_connect('localhost', 'shaw', 'Shaw19940522', 'live');
+  mysqli_set_charset($link,"utf8");
+  $live_data = mysqli_query($link, "SELECT * FROM m_live INNER JOIN m_live_house ON m_live_house.live_house_no = m_live.live_house_no INNER JOIN m_prefecture ON m_live.live_area_no = m_prefecture.id WHERE m_live.sequence = 36 or m_live.sequence = 38 order by live_date_time;");
+?>
+
 <div class="info">
   <div class="info-main">
-    <form action="result.php" method="post">
-      <h2 class="top-title">ライブ詳細検索</h2>
-      <p class="content">開催場所</p>
-      <div class="cp_ipselect cp_sl01">
-        <select name="area_no" required>
-          <option value="" hidden>開催場所</option>
-          <option value="12">東京</option>
-          <option value="22">名古屋</option>
-          <option value="13">神奈川</option>
-        </select>
-      </div>
-      <p class="content">開催月</p>
-      <div>
-	<!--<input type="date" name="date"></input>-->
-        <input type="month" name="date" />
-      </div>
-      <div class="button-panel">
-        <input type="submit" class="button" title="検索" value="検索"></input>
-      </div>
-    </form>
+    <?php
+      while($obj = $live_data->fetch_object()) {
+        echo('<div class="cp_card04">');
+	  echo('<div class="details">');
+	    echo('<div class="category">');
+	      echo('<p>'.$obj->live_house_area.'</p>');
+	    echo('</div>');
+	  echo('</div>');
+          echo('<div class="description">');
+	    echo('<h1>'.$obj->live_house_name.'</h1>');
+	    echo('<div class="text">');
+              $live_date = new DateTime($obj->live_date_time);
+	      echo('<p>開催日 : '.$live_date->format("m/d").'</p>');
+	      echo('<p>'.$obj->live_info.'</p>');
+	      echo('<a href="http://35.213.2.106/info.php?liveCd='.$obj->sequence.'" class="">詳しく見る</a>');
+	    echo('</div>');
+	  echo('</div>');
+	echo('</div>');
+      }
+    ?>
   </div>
   <!-- サイドメニュー -->
   <div class="info-sub">
     <div class="follow">
       <ul>
-        <a href="tel:0428127000" class="btn-tel">お電話での問い合わせはこちらから</a>
 	<li>
           <div class="gaiyou">
             <a href="http://35.213.2.106/search.php">
@@ -121,17 +119,13 @@ $(function(){
 	<li>
 	  <a href="http://mohanak.com/" class="follow-mohanak">
 	    <i><img class="side-img" src="img/mohanak.jpg" /></i>
-	    MOHANAK（公式ページ）
+	    MOHANAK
 	  </a>
 	</li>
       </ul>
     </div>
   </div>
 </div>
-
-<a href="tel:0428127000">
-  <img class="tel-fixed" src="./tel-b.png">
-</a>
 
 <footer class="footer">
 <div class="footer-inner">
@@ -140,6 +134,7 @@ $(function(){
 	</div>
 </div>
 </footer>
+
 
 </body>
 </html>

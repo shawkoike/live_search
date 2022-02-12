@@ -1,5 +1,5 @@
 <?php
-  $link = mysqli_connect('localhost', '', '', "live");
+  $link = mysqli_connect('localhost', 'shaw', 'Shaw19940522', "live");
   mysqli_set_charset($link, "utf8");
   $jsonParams = file_get_contents('php://input');
   $array = json_decode( $jsonParams , true ) ;

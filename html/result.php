@@ -7,9 +7,12 @@
 <meta charset="UTF-8">
 <title>ライブ検索サービス</title>
 <meta name="viewport" content="width=device-width">
+<meta name="keywords" content="土日,出演者募集中,ライブ出演,コピーバンド,出演バンド,東京,名古屋,神奈川,大阪,土曜,日曜,MOHANAK,モハナック">
+<meta name=”description” content="イベント企画/制作/運営 MOHANAK(モハナック)が主催する、東京/名古屋/神奈川/大阪を中心に土日音楽ライブイベント出演者募集。社会人バンド、コピーバンド、週末限定、プロ志向、アマ問いません
+。">
 
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">
-<link rel="stylesheet" href="css/style-result.css">
+<link rel="stylesheet" href="css/style-result.css?ver=1.0.1">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -58,12 +61,12 @@ $(function(){
   </header>
 
 <?php
-  $link = mysqli_connect('localhost', '', '', 'live');
+  $link = mysqli_connect('localhost', 'shaw', 'Shaw19940522', 'live');
   mysqli_set_charset($link,"utf8");
   if ($_POST["area_no"]) {
-    $live_data = mysqli_query($link, "SELECT * FROM m_live INNER JOIN m_live_house ON m_live_house.live_house_no = m_live.live_house_no INNER JOIN m_prefecture ON m_live.live_area_no = m_prefecture.id WHERE live_area_no = ".$_POST["area_no"].' AND live_date_time >= "'.str_replace('/', '-', $_POST["date"]).'-01 00:00:00" AND live_date_time <="'.str_replace('/', '-', $_POST["date"]).'-31 23:59:59";');
+    $live_data = mysqli_query($link, "SELECT * FROM m_live INNER JOIN m_live_house ON m_live_house.live_house_no = m_live.live_house_no INNER JOIN m_prefecture ON m_live.live_area_no = m_prefecture.id WHERE live_area_no = ".$_POST["area_no"].' AND live_date_time >= "'.str_replace('/', '-', $_POST["date"]).'-01 00:00:00" AND live_date_time <="'.str_replace('/', '-', $_POST["date"]).'-31 23:59:59" order by live_date_time;');
   } else if ($_GET["area_no"]) {
-    $live_data = mysqli_query($link, "SELECT * FROM m_live INNER JOIN m_live_house ON m_live_house.live_house_no = m_live.live_house_no INNER JOIN m_prefecture ON m_live.live_area_no = m_prefecture.id WHERE live_area_no = ".$_GET["area_no"]);
+    $live_data = mysqli_query($link, "SELECT * FROM m_live INNER JOIN m_live_house ON m_live_house.live_house_no = m_live.live_house_no INNER JOIN m_prefecture ON m_live.live_area_no = m_prefecture.id WHERE live_area_no = ".$_GET["area_no"].' order by live_date_time;');
   }
 ?>
 
@@ -94,11 +97,12 @@ $(function(){
   <div class="info-sub">
     <div class="follow">
       <ul>
+        <a href="tel:0428127000" class="btn-tel">お電話での問い合わせはこちらから</a>
 	<li>
           <div class="gaiyou">
             <a href="http://35.213.2.106/search.php">
 	      <img class="search_img" src="img/search.jpg" />
-              <p>様々な条件から出演可能なライブ検索が可能です。</p>
+              <p>様々な条件から出演可能なライブが検索できます。</p>
             </a>
           </div>
 	</li>
@@ -127,6 +131,10 @@ $(function(){
     </div>
   </div>
 </div>
+
+<a href="tel:0428127000">
+  <img class="tel-fixed" src="./tel-b.png">
+</a>
 
 <footer class="footer">
 <div class="footer-inner">

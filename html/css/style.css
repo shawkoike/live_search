@@ -116,6 +116,37 @@ body	{margin: 0;
 	width: auto;
 	margin-left: 60px}
 
+/* 電話番号 */
+.btn-tel{
+	position: relative;
+	display: block;
+	border-radius: 50px;
+	color: white;
+	font-weight: bold;
+	text-align: center;
+	background: #f75065;
+	padding: 30px 0;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.btn-tel::after{
+	content: "";
+	background: url(../tel.png) no-repeat center;
+	background-size: contain;
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	top: calc(50% - 12px);
+	left: 15px;
+}
+
+.tel-fixed{
+	position : fixed;
+	right : 30px;
+	bottom : 30px;
+	width: 60px;
+}
 
 /* SNSメニュー */
 .follow ul	{margin: 0;
@@ -412,3 +443,5 @@ body	{margin: 0;
   color: white;
   background-color: black;
 }
+
+
